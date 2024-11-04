@@ -1,24 +1,23 @@
-document.addEventListener('DOMContentLoaded', (e) => {
+document.addEventListener('DOMContentLoaded', () => {
   const createCounterElement = () => {
-    let count = 0
+    let count = 0; // Initialize counter
 
-    const counterDiv = document.querySelector('#increment-counter')
-    const counterParagraph = document.getElementById('counter')
+    // Get counter paragraph and button elements
+    const counterParagraph = document.getElementById('counter');
+    const incrementButton = document.getElementById('incrementBtn');
 
-    counterDiv.addEventListener('click', (e) => {
-      e.preventDefault()
-      alert(count)
-      const target = e.target.classList
+    // Set initial counter display
+    counterParagraph.textContent = count;
 
-      if (target.tagName === 'BUTTON' && target.innerText === 'Increment') {
-        alert(count)
-        count += 1
-        counterParagraph.textContent = count
-      }
-    })
+    // Add event listener directly on the button
+    incrementButton.addEventListener('click', () => {
+      alert(count); // Display current count in an alert before increment
 
-    document.body.appendChild(counterDiv)
-  }
+      // Increment the counter and update the paragraph text
+      count += 1;
+      counterParagraph.textContent = count;
+    });
+  };
 
-  createCounterElement()
-})
+  createCounterElement();
+});
